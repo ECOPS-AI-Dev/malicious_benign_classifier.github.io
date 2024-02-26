@@ -12,7 +12,8 @@ from flask import Flask, request,render_template
 app = Flask(__name__)
 
 # Load your trained model
-MODEL_PATH = './models/my_h5_model.h5'
+# MODEL_PATH = './models/my_h5_model.h5'
+MODEL_PATH ='https://raw.githubusercontent.com/ECOPS-AI-Dev/malicious_benign_classifier.github.io/master/app.py'
 model = load_model(MODEL_PATH)
 
 #빈 데이터프레임 만들기
