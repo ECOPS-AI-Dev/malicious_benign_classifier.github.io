@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<html>
+    <body>
+        {% if result >= 0.8 %}
+        <h1>This website is MALICIOUS!!!</h1>
+        <h3>The malicious probability is {{ result }}.</h3>
+        {% else %}
+        <h1>This website is BENIGN!!!</h1>
+        <h3>The Benign probability is {{ 100-(result*100) }}%.</h3>
+        <button onclick="history.back()">Go Back</button>
+        {% endif %}
+    </body>
+</html>
+{% endblock %}
