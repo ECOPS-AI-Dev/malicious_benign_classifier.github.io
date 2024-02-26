@@ -3,6 +3,7 @@ import requests
 from scapy.all import IP, TCP, UDP, RandShort, DNS, DNSQR
 import pandas as pd
 from keras.models import load_model
+import math
 
 # Flask utils
 from flask import Flask, request,render_template
@@ -11,7 +12,7 @@ from flask import Flask, request,render_template
 app = Flask(__name__)
 
 # Load your trained model
-MODEL_PATH = 'C:/flask/flask/project/models/my_h5_model.h5'
+MODEL_PATH = './models/my_h5_model.h5'
 model = load_model(MODEL_PATH)
 
 #빈 데이터프레임 만들기
@@ -129,7 +130,9 @@ def index():
        #predictions = model_predict(df, model)
        result=model.predict(df)
        result=float(result)
-       return render_template("result.html",result=result)
+       result = math.floor(result * 100000) / 100000
+       print(result)
+       return render_template("result.html", result = result)
     return render_template("index.html")
 
 if __name__ == '__main__':
